@@ -10,8 +10,8 @@ int main(){
 
     carrinhoDeCompras.imprimirLista();
 
-    carrinhoDeCompras.imprimirPrecoEQuantidade();
+    carrinhoDeCompras.deletarOuAdicionarAoCarrinho();
 
-
+    carrinhoDeCompras.imprimirLista();
     return 0;
 }
