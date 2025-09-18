@@ -12,6 +12,7 @@
 /bin/
 /Debug/
 /Release/
+/output/
 
 # Arquivos temporários
 *.log
