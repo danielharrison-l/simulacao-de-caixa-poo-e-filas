@@ -19,8 +19,6 @@ public:
     void adicionarItemAoCarrinho( vector<dados>& compras){
         carrinhoDeCompras.push_back(compras);
     }
-    
-
 
     void calcularPrecoTotalDoCarrinho() const {
     double valor = 0;

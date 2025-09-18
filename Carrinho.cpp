@@ -2,6 +2,5 @@
 
 Carrinho::Carrinho(){
 
-    
 imprimirLista();
 }
