@@ -39,7 +39,7 @@ public:
 
     
 
-    void adicionarQuantidadeDoProdutoAoCarrinho(){
+    void adicionarQuantidadeDeProdutosAoCarrinho(){
         int quantidade;
         int indiceDoProduto;
 
@@ -63,7 +63,7 @@ public:
         }
     }
 
-    void retirarQuantidadeDoProdutoDoCarrinho(){
+    void retirarQuantidadeDeProdutosDoCarrinho(){
         int quantidade;
         int indiceDoProduto;
 

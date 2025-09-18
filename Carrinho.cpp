@@ -2,5 +2,6 @@
 
 Carrinho::Carrinho(){
 
+adicionarQuantidadeDeProdutosAoCarrinho();
 imprimirLista();
 }
