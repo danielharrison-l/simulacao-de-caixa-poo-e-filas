@@ -23,7 +23,7 @@ public:
     double precoTotal = 0;
         for( const auto& produtos : carrinhoDeCompras){
             
-            if((holds_alternative<double>(produtos[1]) || holds_alternative<double>(produtos[2])) && (holds_alternative<int>(produtos[2]) ||holds_alternative<int>(produtos[1]))){
+            if (holds_alternative<double>(produtos[1]) && holds_alternative<int>(produtos[2])) {
                 double preco = get<double>(produtos[1]);
                 int quantidade = get<int>(produtos[2]);
                 valor = preco * quantidade;

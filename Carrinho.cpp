@@ -3,7 +3,7 @@
 int main(){
     Carrinho carrinhoDeCompras;
     vector<dados> carro1 = {"Batata",3.5,10};
-    vector<dados> carro2 = {"Pizza",15.5,2};
+    vector<dados> carro2 = {"Pizza",15.0,2};
     
     carrinhoDeCompras.adicionarItemAoCarrinho(carro1);
     carrinhoDeCompras.adicionarItemAoCarrinho(carro2);
