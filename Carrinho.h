@@ -4,11 +4,13 @@
 #include <vector>
 #include <variant>
 #include <string>
+#include <iomanip>
 using namespace std;
 
 using dados = variant<int,double,string>;
 
 class Carrinho {
+
 private:
     vector<vector<dados>> carrinhoDeCompras;
 
@@ -17,8 +19,10 @@ public:
     void adicionarItemAoCarrinho( vector<dados>& compras){
         carrinhoDeCompras.push_back(compras);
     }
-    // está  dando preço errado.
-    double calcularPrecoTotalDoCarrinho() const {
+    
+
+
+    void calcularPrecoTotalDoCarrinho() const {
     double valor = 0;
     double precoTotal = 0;
         for( const auto& produtos : carrinhoDeCompras){
@@ -28,13 +32,11 @@ public:
                 int quantidade = get<int>(produtos[2]);
                 valor = preco * quantidade;
                 precoTotal += valor;
-                
-
             }
             valor = 0;
-            
         }
-        return precoTotal;
+        cout << "Seu preco total e de R$";
+        cout << fixed << setprecision(2) << precoTotal;
     }
 
     void deletarOuAdicionarAoCarrinho(){
