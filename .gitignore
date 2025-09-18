@@ -1,0 +1,26 @@
+# Compilados
+*.exe
+*.obj
+*.o
+*.so
+*.dll
+*.lib
+*.a
+
+# Diretórios de build
+/build/
+/bin/
+/Debug/
+/Release/
+
+# Arquivos temporários
+*.log
+*.tmp
+*.swp
+
+# VS Code settings
+.vscode/
+
+# Arquivos do sistema
+Thumbs.db
+.DS_Store
