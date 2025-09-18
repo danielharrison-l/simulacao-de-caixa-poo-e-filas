@@ -1,13 +1,7 @@
 #include "Carrinho.h"
 
-int main(){
-    Carrinho carrinhoDeCompras;
+Carrinho::Carrinho(){
+
     
-    carrinhoDeCompras.imprimirLista();
-
-    carrinhoDeCompras.deletarOuAdicionarAoCarrinho();
-
-    carrinhoDeCompras.imprimirLista();
-    carrinhoDeCompras.calcularPrecoTotalDoCarrinho();
-    return 0;
+imprimirLista();
 }

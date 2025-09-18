@@ -39,68 +39,69 @@ public:
         cout << fixed << setprecision(2) << precoTotal;
     }
 
-    void deletarOuAdicionarAoCarrinho(){
+    
 
-        int escolha;
+    void adicionarQuantidadeDoProdutoAoCarrinho(){
         int quantidade;
-        int indice;
+        int indiceDoProduto;
 
-        cout << "Escolha um produto selecionando seu numero:";
-        cin >> indice;
-        cout <<  "Voce dejesa retirar ou adicionar itens do produto?\n" << "1 - Adicionar\n2 - Retirar\nEscolha: ";
-        cin >> escolha;
-        
-            if(escolha == 1){
+        cout << "Digite o numero do produto: ";
+        cin >> indiceDoProduto;
 
-                cout << "Digite quanto do produto deseja adicionar: ";
-                cin >> quantidade;
+        cout << "Digite a quantidade que deseja adicionar: ";
+        cin >> quantidade;
 
-                if(indice - 1 >= 0 && indice - 1 < (int)carrinhoDeCompras.size()){
-                    auto& produto = carrinhoDeCompras[indice - 1];
-                        if(holds_alternative<int>(produto[2])) {
-                            int totalDeProdutos = get<int>(produto[2]);
-                            totalDeProdutos += quantidade;
-                            produto[2] = totalDeProdutos;
-                            cout << "Quantidade atualizada!" << endl;
-                            
-                        }   
-                }
-
-            }
-            else if(escolha == 2){
-                cout << "Digite quanto do produto deseja retirar: ";
-                cin >> quantidade;
-
-                if(indice - 1 >= 0 && indice - 1 < (int)carrinhoDeCompras.size()){
-                    auto& produto = carrinhoDeCompras[indice - 1];
-
-                    if(holds_alternative<int>(produto[2])){
-                        int totalDeprodutos = get<int>(produto[2]);
-
-                        if(totalDeprodutos > quantidade){
-                            totalDeprodutos -= quantidade;
-                            produto[2] = totalDeprodutos;
-                            cout << "Quantidade atualizada!" << endl;
-                        }
-
-                        else if(totalDeprodutos <= quantidade){
-                            carrinhoDeCompras.erase(carrinhoDeCompras.begin() + indice - 1);
-                            cout << "Voce retirou um item do carrinho" << endl;
-                        }
-                    }
+        if(indiceDoProduto - 1 >= 0 && indiceDoProduto - 1 <= (int)carrinhoDeCompras.size()){
+            auto& produto = carrinhoDeCompras[indiceDoProduto - 1];
+            
+            if(holds_alternative<int>(produto[2])){
+                int quantidadeTotal = get<int>(produto[2]);
+                if(quantidade >= 0){
+                    quantidadeTotal += quantidade;
+                    produto[2] = quantidadeTotal;
+                    cout << "Lista Atualizada!\n";
                 }
             }
-            else{
-                cout << "Escolha uma opção válida" << endl;
-            }
+        }
+    }
 
-        
+    void retirarQuantidadeDoProdutoDoCarrinho(){
+        int quantidade;
+        int indiceDoProduto;
+
+        cout << "Escolha qual produto deseja retirar a quantidade: ";
+        cin >> indiceDoProduto;
+        cout << "Digite quanto deseja retirar: ";
+        cin >> quantidade;
+
+        if(indiceDoProduto - 1 >= 0 && indiceDoProduto <= (int)(carrinhoDeCompras.size())){
+            auto& produto = carrinhoDeCompras[indiceDoProduto - 1];
+            if(holds_alternative<int>(produto[2])){
+                int quantidadeTotal = get<int>(produto[2]);
+
+                if(quantidade < quantidadeTotal){
+                quantidadeTotal -= quantidade;
+                produto[2] = quantidadeTotal;
+                cout << "Lista Atualizada!\n";
+
+                }
+
+                if(quantidade == quantidadeTotal){
+                    carrinhoDeCompras.erase(carrinhoDeCompras.begin() + indiceDoProduto - 1);
+                    cout << "Lista Atualizada!\n";
+                }
+            }
+        }
     }
     
     void imprimirLista() const {
         int numeroNaListaDeCompras = 1;
         cout << "-------------------------- Produtos no Carrinho --------------------------" << endl;
-        cout << "Produto | Preco | Quantidade " << endl;
+        cout << "| Produto | Preco | Quantidade | " << endl;
+        if(carrinhoDeCompras.size() == 0){
+            cout << "Seu carrinho está vazio!\n" << "Adicione alguns produtos.\n";
+        }
+        else{
             for(const auto& produto : carrinhoDeCompras){
 
                 cout << numeroNaListaDeCompras << ". ";
@@ -113,26 +114,10 @@ public:
                 cout << endl;
                 numeroNaListaDeCompras++;
             }
+        }
              cout << "-------------------------------------------------------------------------" << endl;
     }
 
-    void imprimirPrecoEQuantidade() const{
-
-        for(const auto& indice : carrinhoDeCompras){
-            
-            for(int index : {1,2} ){
-                if(index >= 0 && (int)indice.size()){
-                    visit([](auto&& valores){
-                        
-                        cout << valores << " ";
-                    },indice[index]);
-                }
-             }
-             cout << endl;
-             
-            }
-            
-        }   
 };
 
 #endif
