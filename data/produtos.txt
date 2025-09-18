@@ -1,0 +1,10 @@
+Arroz 12.50
+Feijao 8.30
+Macarrao 5.20
+Leite 4.80
+Ovos 7.50
+Azeite 15.90
+Acucar 6.00
+Cafe 10.25
+Farinha 3.75
+Manteiga 9.60

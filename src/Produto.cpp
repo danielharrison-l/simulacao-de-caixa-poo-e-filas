@@ -6,17 +6,17 @@ Produto::Produto(int id, const std::string &nome, double preco)
 
 int Produto::getId() const
 {
-  return id;
+  return this->id;
 }
 
 std::string Produto::getNome() const
 {
-  return nome;
+  return this->nome;
 }
 
 double Produto::getPreco() const
 {
-  return preco;
+  return this->preco;
 }
 
 void Produto::setNome(const std::string &nome)
