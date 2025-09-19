@@ -1,4 +1,4 @@
-#include "Produto.hpp"
+#include "../include/Produto.hpp"
 #include <sstream>
 
 Produto::Produto(int id, const std::string &nome, double preco)

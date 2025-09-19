@@ -1,0 +1,46 @@
+{
+  "produtos": [
+    {
+      "id": 1,
+      "nome": "Arroz 1kg",
+      "preco": 9.90,
+      "categoria": "Grãos"
+    },
+    {
+      "id": 2,
+      "nome": "Feijão 1kg",
+      "preco": 8.49,
+      "categoria": "Grãos"
+    },
+    {
+      "id": 3,
+      "nome": "Macarrão 500g",
+      "preco": 5.29,
+      "categoria": "Massas"
+    },
+    {
+      "id": 4,
+      "nome": "Leite 1L",
+      "preco": 4.99,
+      "categoria": "Laticínios"
+    },
+    {
+      "id": 5,
+      "nome": "Café 500g",
+      "preco": 14.50,
+      "categoria": "Bebidas"
+    },
+    {
+      "id": 6,
+      "nome": "Açúcar 1kg",
+      "preco": 3.99,
+      "categoria": "Condimentos"
+    },
+    {
+      "id": 7,
+      "nome": "Óleo de Soja 900ml",
+      "preco": 6.79,
+      "categoria": "Óleos"
+    }
+  ]
+}

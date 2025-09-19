@@ -1,4 +1,4 @@
-#include "Cliente.hpp"
+#include "../include/Cliente.hpp"
 #include <sstream>
 
 Cliente::Cliente(int id, const std::string &nome)
@@ -20,6 +20,11 @@ void Cliente::setNome(const std::string &nome)
 }
 
 Carrinho &Cliente::getCarrinho()
+{
+  return carrinho;
+}
+
+const Carrinho &Cliente::getCarrinho() const
 {
   return carrinho;
 }

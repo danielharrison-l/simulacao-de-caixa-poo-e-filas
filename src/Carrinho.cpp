@@ -1,4 +1,4 @@
-#include "Carrinho.hpp"
+#include "../include/Carrinho.hpp"
 #include <iostream>
 #include <iomanip>
 
@@ -32,18 +32,28 @@ double Carrinho::calcularPrecoTotal() const
 
 void Carrinho::imprimirLista() const
 {
+  imprimirLista(std::cout);
+}
+
+void Carrinho::imprimirLista(std::ostream &os) const
+{
   if (carrinhoDeCompras.empty())
   {
-    std::cout << "Seu carrinho está vazio!\n";
+    os << "Seu carrinho está vazio!\n";
     return;
   }
 
-  std::cout << "-------------------------- Produtos no Carrinho --------------------------\n";
+  os << "-------------------------- Produtos no Carrinho --------------------------\n";
   int numero = 1;
   for (const auto &produto : carrinhoDeCompras)
   {
-    std::cout << numero << ". " << produto.toString() << std::endl;
+    os << numero << ". " << produto.toString() << std::endl;
     numero++;
   }
-  std::cout << "-------------------------------------------------------------------------\n";
+  os << "-------------------------------------------------------------------------\n";
+}
+
+const std::vector<Produto>& Carrinho::getProdutos() const
+{
+  return carrinhoDeCompras;
 }

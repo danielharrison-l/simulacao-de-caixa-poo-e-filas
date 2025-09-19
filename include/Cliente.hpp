@@ -20,6 +20,7 @@ public:
   void setNome(const std::string &nome);
 
   Carrinho &getCarrinho();
+  const Carrinho &getCarrinho() const;
 
   std::string toString() const;
 };
