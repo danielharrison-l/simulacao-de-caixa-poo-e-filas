@@ -1,0 +1,72 @@
+{
+    "compras": [
+        {
+            "caixa": "Caixa 1",
+            "cliente": {
+                "id": 1,
+                "nome": "Isabela Martins"
+            },
+            "id_compra": 1,
+            "itens": [
+                {
+                    "id": 2,
+                    "nome": "Feijão 1kg",
+                    "preco_unitario": 8.49,
+                    "quantidade": 1,
+                    "subtotal": 8.49
+                },
+                {
+                    "id": 5,
+                    "nome": "Café 500g",
+                    "preco_unitario": 14.5,
+                    "quantidade": 1,
+                    "subtotal": 14.5
+                },
+                {
+                    "id": 6,
+                    "nome": "Açúcar 1kg",
+                    "preco_unitario": 3.99,
+                    "quantidade": 2,
+                    "subtotal": 7.98
+                }
+            ],
+            "timestamp": "2025-09-19 13:21:47",
+            "total": 30.97
+        },
+        {
+            "caixa": "Caixa 1",
+            "cliente": {
+                "id": 1,
+                "nome": "Isabela Martins"
+            },
+            "id_compra": 2,
+            "itens": [
+                {
+                    "id": 2,
+                    "nome": "Feijão 1kg",
+                    "preco_unitario": 8.49,
+                    "quantidade": 1,
+                    "subtotal": 8.49
+                },
+                {
+                    "id": 5,
+                    "nome": "Café 500g",
+                    "preco_unitario": 14.5,
+                    "quantidade": 1,
+                    "subtotal": 14.5
+                },
+                {
+                    "id": 6,
+                    "nome": "Açúcar 1kg",
+                    "preco_unitario": 3.99,
+                    "quantidade": 2,
+                    "subtotal": 7.98
+                }
+            ],
+            "timestamp": "2025-09-19 13:22:06",
+            "total": 30.97
+        }
+    ],
+    "total_compras": 2,
+    "ultima_atualizacao": "2025-09-19 13:22:06"
+}

@@ -69,6 +69,8 @@ void Caixa::salvarCompraEmArquivo(const Cliente &cliente) const
 
   novaCompra["itens"] = json::array();
   const auto &produtos = carrinho.getProdutos();
+  
+  double pesoTotalCompra = 0.0;
 
   std::map<int, int> contadorProdutos;
   for (const auto &produto : produtos)
@@ -94,12 +96,18 @@ void Caixa::salvarCompraEmArquivo(const Cliente &cliente) const
       itemJson["id"] = produtoEncontrado->getId();
       itemJson["nome"] = produtoEncontrado->getNome();
       itemJson["preco_unitario"] = produtoEncontrado->getPreco();
+      itemJson["peso_unitario"] = produtoEncontrado->getPeso();
       itemJson["quantidade"] = par.second;
       itemJson["subtotal"] = produtoEncontrado->getPreco() * par.second;
+      itemJson["peso_total"] = produtoEncontrado->getPeso() * par.second;
+      
+      pesoTotalCompra += produtoEncontrado->getPeso() * par.second;
 
       novaCompra["itens"].push_back(itemJson);
     }
   }
+  
+  novaCompra["peso_total_compra"] = pesoTotalCompra;
 
   historicoCompleto["compras"].push_back(novaCompra);
 
