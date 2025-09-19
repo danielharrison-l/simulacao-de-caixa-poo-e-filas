@@ -61,6 +61,7 @@
     "forward_list": "cpp",
     "map": "cpp",
     "ratio": "cpp",
-    "valarray": "cpp"
+    "valarray": "cpp",
+    "chrono": "cpp"
   }
 }

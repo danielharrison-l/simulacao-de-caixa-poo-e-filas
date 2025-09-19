@@ -4,6 +4,8 @@
 #include "Caixa.hpp"
 #include "FilaClientes.hpp"
 #include "Produto.hpp"
+#include "FormaPagamento.hpp"
+#include "GeradorClientes.hpp"
 #include <vector>
 #include <string>
 
@@ -16,6 +18,9 @@ private:
     Cliente *clienteAtual;
     int vendasRealizadas;
     double totalVendido;
+
+    ProcessadorPagamento processadorPagamento;
+    GeradorClientes *geradorClientes;
 
     void limparTela();
     void mostrarCabecalho();
@@ -35,6 +40,10 @@ public:
     void finalizarCompra();
     void mostrarRelatorio();
     void mostrarCarrinhoAtual();
+
+    TipoPagamento escolherFormaPagamento();
+    bool processarPagamento(double valorTotal, TipoPagamento tipo);
+    void verificarNovosClientes();
 
     bool temClienteAtual() const;
     bool filaVazia() const;

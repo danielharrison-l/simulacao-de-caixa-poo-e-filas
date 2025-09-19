@@ -9,8 +9,10 @@
 #endif
 
 CaixaInterativo::CaixaInterativo(const std::string &nomeCaixa, FilaClientes *filaClientes, std::vector<Produto> *listaProdutos)
-    : caixa(nomeCaixa), fila(filaClientes), produtos(listaProdutos), clienteAtual(nullptr), vendasRealizadas(0), totalVendido(0.0)
+    : caixa(nomeCaixa), fila(filaClientes), produtos(listaProdutos), clienteAtual(nullptr),
+      vendasRealizadas(0), totalVendido(0.0), geradorClientes(nullptr)
 {
+    geradorClientes = new GeradorClientes(produtos);
 }
 
 void CaixaInterativo::limparTela()
@@ -50,6 +52,8 @@ void CaixaInterativo::iniciarSimulacao()
     bool continuar = true;
     while (continuar)
     {
+        verificarNovosClientes();
+
         limparTela();
         mostrarCabecalho();
         mostrarEstatisticas();
@@ -356,12 +360,17 @@ void CaixaInterativo::finalizarCompra()
     std::cout << "│ Total: R$ " << std::fixed << std::setprecision(2) << std::setw(8) << total << "                          │" << std::endl;
     std::cout << "└─────────────────────────────────────────────────┘" << std::endl;
 
-    std::cout << "\n💳 Confirmar finalização da compra? (s/n): ";
-    char confirmacao;
-    std::cin >> confirmacao;
-    std::cin.ignore();
+    TipoPagamento tipoPagamento = escolherFormaPagamento();
 
-    if (confirmacao == 's' || confirmacao == 'S')
+    if (tipoPagamento == static_cast<TipoPagamento>(0))
+    {
+        std::cout << "\n❌ Compra cancelada." << std::endl;
+        std::cout << "Pressione Enter para continuar...";
+        std::cin.get();
+        return;
+    }
+
+    if (processarPagamento(total, tipoPagamento))
     {
         caixa.processarCompra(*clienteAtual);
 
@@ -379,7 +388,7 @@ void CaixaInterativo::finalizarCompra()
     }
     else
     {
-        std::cout << "\n❌ Compra cancelada." << std::endl;
+        std::cout << "\n❌ Pagamento não realizado. Tente outra forma de pagamento." << std::endl;
         std::cout << "Pressione Enter para continuar...";
         std::cin.get();
     }
@@ -414,4 +423,77 @@ bool CaixaInterativo::temClienteAtual() const
 bool CaixaInterativo::filaVazia() const
 {
     return fila->vazia();
+}
+
+TipoPagamento CaixaInterativo::escolherFormaPagamento()
+{
+    std::cout << "\n┌─────────────── FORMA DE PAGAMENTO ───────────────┐" << std::endl;
+    std::cout << "│                                                  │" << std::endl;
+    std::cout << "│  1. 💵 Dinheiro                                  │" << std::endl;
+    std::cout << "│  2. 💳 Cartão de Débito                          │" << std::endl;
+    std::cout << "│  3. 💳 Cartão de Crédito                         │" << std::endl;
+    std::cout << "│  4. 📱 PIX                                       │" << std::endl;
+    std::cout << "│  0. ❌ Cancelar                                  │" << std::endl;
+    std::cout << "│                                                  │" << std::endl;
+    std::cout << "└──────────────────────────────────────────────────┘" << std::endl;
+    std::cout << "\nEscolha a forma de pagamento: ";
+
+    int opcao = obterOpcao();
+
+    if (opcao >= 1 && opcao <= 4)
+    {
+        return static_cast<TipoPagamento>(opcao);
+    }
+
+    return static_cast<TipoPagamento>(0);
+}
+
+bool CaixaInterativo::processarPagamento(double valorTotal, TipoPagamento tipo)
+{
+    std::cout << "\n💳 Processando pagamento via " << processadorPagamento.obterNomePagamento(tipo) << "..." << std::endl;
+
+    ResultadoPagamento resultado(false, "");
+
+    switch (tipo)
+    {
+    case TipoPagamento::DINHEIRO:
+    {
+        std::cout << "💰 Digite o valor pago: R$ ";
+        double valorPago;
+        std::cin >> valorPago;
+        std::cin.ignore();
+
+        resultado = processadorPagamento.processarDinheiro(valorTotal, valorPago);
+        break;
+    }
+    case TipoPagamento::CARTAO_DEBITO:
+        resultado = processadorPagamento.processarCartaoDebito(valorTotal);
+        break;
+
+    case TipoPagamento::CARTAO_CREDITO:
+        resultado = processadorPagamento.processarCartaoCredito(valorTotal);
+        break;
+
+    case TipoPagamento::PIX:
+        resultado = processadorPagamento.processarPix(valorTotal);
+        break;
+    }
+
+    std::cout << "\n"
+              << (resultado.sucesso ? "✅" : "❌") << " " << resultado.mensagem << std::endl;
+
+    if (resultado.sucesso && resultado.troco > 0)
+    {
+        std::cout << "💰 Troco: R$ " << std::fixed << std::setprecision(2) << resultado.troco << std::endl;
+    }
+
+    return resultado.sucesso;
+}
+
+void CaixaInterativo::verificarNovosClientes()
+{
+    if (geradorClientes)
+    {
+        geradorClientes->adicionarClienteSeNecessario(*fila);
+    }
 }

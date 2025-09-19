@@ -4,43 +4,97 @@
       "id": 1,
       "nome": "Arroz 1kg",
       "preco": 9.90,
+      "quantidade": 1.0,
+      "unidade": "quilogramas",
       "categoria": "Grãos"
     },
     {
       "id": 2,
       "nome": "Feijão 1kg",
       "preco": 8.49,
+      "quantidade": 1.0,
+      "unidade": "quilogramas",
       "categoria": "Grãos"
     },
     {
       "id": 3,
       "nome": "Macarrão 500g",
       "preco": 5.29,
+      "quantidade": 500.0,
+      "unidade": "gramas",
       "categoria": "Massas"
     },
     {
       "id": 4,
       "nome": "Leite 1L",
       "preco": 4.99,
+      "quantidade": 1.0,
+      "unidade": "litros",
       "categoria": "Laticínios"
     },
     {
       "id": 5,
       "nome": "Café 500g",
       "preco": 14.50,
+      "quantidade": 500.0,
+      "unidade": "gramas",
       "categoria": "Bebidas"
     },
     {
       "id": 6,
       "nome": "Açúcar 1kg",
       "preco": 3.99,
+      "quantidade": 1.0,
+      "unidade": "quilogramas",
       "categoria": "Condimentos"
     },
     {
       "id": 7,
       "nome": "Óleo de Soja 900ml",
       "preco": 6.79,
+      "quantidade": 900.0,
+      "unidade": "mililitros",
       "categoria": "Óleos"
+    },
+    {
+      "id": 8,
+      "nome": "Pão de Forma",
+      "preco": 4.50,
+      "quantidade": 1.0,
+      "unidade": "unidades",
+      "categoria": "Padaria"
+    },
+    {
+      "id": 9,
+      "nome": "Banana 1kg",
+      "preco": 3.99,
+      "quantidade": 1.0,
+      "unidade": "quilogramas",
+      "categoria": "Frutas"
+    },
+    {
+      "id": 10,
+      "nome": "Sabonete 90g",
+      "preco": 2.50,
+      "quantidade": 90.0,
+      "unidade": "gramas",
+      "categoria": "Higiene"
+    },
+    {
+      "id": 11,
+      "nome": "Refrigerante 2L",
+      "preco": 7.99,
+      "quantidade": 2.0,
+      "unidade": "litros",
+      "categoria": "Bebidas"
+    },
+    {
+      "id": 12,
+      "nome": "Shampoo 400ml",
+      "preco": 12.90,
+      "quantidade": 400.0,
+      "unidade": "mililitros",
+      "categoria": "Higiene"
     }
   ]
 }
