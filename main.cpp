@@ -59,10 +59,10 @@ std::vector<Produto> carregarProdutosJSON(const std::string &caminho)
   catch (const std::exception &e)
   {
     std::cout << "Erro ao ler JSON: " << e.what() << std::endl;
-    std::cout << "Usando produtos padrão." << std::endl;
+    std::cout << "Usando produtos padr?o." << std::endl;
     produtos.emplace_back(1, "Arroz 1kg", 9.90);
-    produtos.emplace_back(2, "Feijão 1kg", 8.49);
-    produtos.emplace_back(3, "Macarrão 500g", 5.29);
+    produtos.emplace_back(2, "Feij?o 1kg", 8.49);
+    produtos.emplace_back(3, "Macarr?o 500g", 5.29);
   }
 
   return produtos;
@@ -73,7 +73,7 @@ void gerarClientesAleatorios(FilaClientes &fila, const std::vector<Produto> &pro
   std::vector<std::string> nomes = {
       "Ana Silva", "Bruno Costa", "Carla Santos", "Diego Oliveira",
       "Elena Ferreira", "Felipe Lima", "Gabriela Rocha", "Hugo Alves",
-      "Isabela Martins", "João Pereira", "Karina Souza", "Lucas Barbosa"};
+      "Isabela Martins", "Jo?o Pereira", "Karina Souza", "Lucas Barbosa"};
 
   std::mt19937 rng(std::random_device{}());
   std::uniform_int_distribution<int> qtdClientesDist(3, 8);
@@ -110,7 +110,7 @@ int main()
   gerarClientesAleatorios(fila, produtos);
 
   std::cout << "? Sistema carregado!" << std::endl;
-  std::cout << "?? Produtos disponíveis: " << produtos.size() << std::endl;
+  std::cout << "?? Produtos dispon?veis: " << produtos.size() << std::endl;
   std::cout << "?? Clientes na fila: " << fila.tamanho() << std::endl;
   std::cout << std::endl;
 
